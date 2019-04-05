@@ -8,7 +8,7 @@ import {ContactComponent} from './home/contact/contact.component';
 import {UsersComponent} from './home/users/users.component';
 import {AuthguardGuard} from './authguard.guard';
 const routes: Routes = [
-  { path: '', component: HomeComponent,  children: [
+  { path: '', component: HomeComponent, canActivate: [AuthguardGuard], children: [
       {path : '', component: ContactComponent},
       {path : 'users', component: UsersComponent},
       {
