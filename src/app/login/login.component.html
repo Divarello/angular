@@ -1,0 +1,19 @@
+<div class="login-page">
+  <div class="form">
+    <form (ngSubmit)="go()" [formGroup]="loginForm" class="login-form">
+      <input type="text" placeholder="username" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.required">Email is required</div>
+        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+      </div>
+      <input type="password" placeholder="password" formControlName="password"  [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+
+      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors.required">Password is required</div>
+        <div *ngIf="f.password.errors.minlength">Password min 6 </div>
+      </div>
+            <button type="submit">login</button>
+      <p class="message">Not registered? <a href="#">Create an account</a></p>
+    </form>
+  </div>
+</div>

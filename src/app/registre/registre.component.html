@@ -1,0 +1,45 @@
+<div class="login-page">
+  <div class="form">
+    <form class="register-form">
+      <input type="text" placeholder="name"/>
+      <input type="password" placeholder="password"/>
+      <input type="text" placeholder="email address"/>
+      <button>create</button>
+      <p class="message">Already registered? <a href="#">Sign In</a></p>
+    </form>
+    <form (ngSubmit)="go()" [formGroup]="registerForm" class="login-form">
+      <input type="text" placeholder="username" formControlName="userName" [ngClass]="{ 'is-invalid': submitted && f.userName.errors }"/>
+      <div *ngIf="submitted && f.userName.errors" class="invalid-feedback">
+        <div *ngIf="f.userName.errors.required">User NAme  is required</div>
+      </div>
+      <input type="text" placeholder="nom" formControlName="firstName" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"/>
+      <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+        <div *ngIf="f.firstName.errors.required">Firsst name  is required</div>
+      </div>
+      <input type="text" placeholder="prenom" formControlName="lastName" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"/>
+      <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+        <div *ngIf="f.lastName.errors.required">last name is required</div>
+      </div>
+      <input type="text" placeholder="email" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"/>
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.required">Email is required</div>
+        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+      </div>
+
+      <input type="password" placeholder="password" formControlName="password"  [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+
+      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors.required">Password is required</div>
+        <div *ngIf="f.password.errors.minlength">Password min 6 </div>
+      </div>
+      <input type="password" placeholder="confirm pasword" formControlName="Cpassword"  [ngClass]="{ 'is-invalid': submitted && f.Cpassword.errors }" />
+
+      <div *ngIf="submitted && f.Cpassword.errors" class="invalid-feedback">
+        <div *ngIf="f.Cpassword.errors.required">Password is required</div>
+        <div *ngIf="f.Cpassword.errors.minlength">Password min 6 </div>
+      </div>
+      <button type="submit">sign-in</button>
+      <p class="message">Registered? <a href="./login">login</a></p>
+    </form>
+  </div>
+</div>
