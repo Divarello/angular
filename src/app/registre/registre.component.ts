@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-registre',
@@ -12,7 +14,7 @@ export class RegistreComponent implements OnInit {
 
   submitted = false ;
 
-  constructor(private formbuilder: FormBuilder) { }
+  constructor(private formbuilder: FormBuilder , public userserv: AuthService , private router: Router) { }
 
   ngOnInit() {
     this.registerForm = this.formbuilder.group({
@@ -35,6 +37,31 @@ export class RegistreComponent implements OnInit {
       return ;
     }
     console.log(this.registerForm.value);
+    let user= {
+      firstName:this.registerForm.get('firstName').value,
+      lastName:this.registerForm.get('lastName').value,
+      phone:"51754522",
+      email:this.registerForm.get('email').value,
+      password:this.registerForm.get('password').value
+    }
+    this.userserv.addNewUser(user).subscribe(res=>{
+      console.log(res);
+      if (res.state==='yes'){
+        let login=  {
+          email:this.registerForm.get('email').value,
+          password:this.registerForm.get('password').value
+        }
+
+        this.userserv.addUser(login).subscribe(res=>{
+          console.log(res);
+          if (res.status === 'success') {
+            localStorage.setItem('state', '1');
+            localStorage.setItem('token',res.data.token );
+            this.router.navigateByUrl('/products')
+          }
+        })
+      }
+    })
   }
 
 }

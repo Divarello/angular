@@ -13,4 +13,8 @@ export class AuthService {
     return this.http.post('http://localhost:3000/users/login', data)
 
   }
+
+  addNewUser(data){
+    return this.http.post('http://localhost:3000/users/add', data)
+  }
 }

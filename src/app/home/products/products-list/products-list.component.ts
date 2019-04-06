@@ -17,7 +17,7 @@ export class ProductsListComponent implements OnInit {
 
   loadData() {
     this.prodserv.getAll().subscribe(res => {
-      console.log(res.msg);
+      console.log(res);
       this.prods = res.msg;
     });
 
