@@ -19,34 +19,34 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formbuilder.group({
-      email:['',[Validators.required, Validators.email]],
-      password:['',[Validators.required, Validators.minLength(6)]]
-    })
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
   }
-  get f(){
+  get f() {
     return this.loginForm.controls;
   }
 
-  go(){
-    this.submitted=true ;
-    if (this.loginForm.invalid){
+  go() {
+    this.submitted = true ;
+    if (this.loginForm.invalid) {
       return ;
     }
     console.log(this.loginForm.value);
-    console.log(this.loginForm.get('email').value)
-    console.log(this.loginForm.get('password').value)
-    const user={
+    console.log(this.loginForm.get('email').value);
+    console.log(this.loginForm.get('password').value);
+    const user = {
       email: this.loginForm.get('email').value,
       password: this.loginForm.get('password').value
     };
-    this.userserv.addUser(user).subscribe(res=>{
+    this.userserv.addUser(user).subscribe(res => {
       console.log(res);
       if (res.status === 'success') {
         localStorage.setItem('state', '1');
-        localStorage.setItem('token',res.data.token );
-        this.router.navigateByUrl('/products')
+        localStorage.setItem('token', res.data.token );
+        this.router.navigateByUrl('/products');
       }
-    })
+    });
 
   }
 }

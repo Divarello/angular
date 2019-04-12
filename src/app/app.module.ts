@@ -11,6 +11,10 @@ import { ContactComponent } from './home/contact/contact.component';
 import { UsersComponent } from './home/users/users.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { HeaderComponent } from './home/header/header.component';
+import { LayoutComponent } from './home/layout/layout.component';
+import { SidebarComponent } from './home/sidebar/sidebar.component';
+import { FooterComponent } from './home/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
     RegistreComponent,
     NotfoundComponent,
     ContactComponent,
-    UsersComponent
+    UsersComponent,
+    HeaderComponent,
+    LayoutComponent,
+    SidebarComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

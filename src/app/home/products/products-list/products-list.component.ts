@@ -18,7 +18,16 @@ export class ProductsListComponent implements OnInit {
   loadData() {
     this.prodserv.getAll().subscribe(res => {
       console.log(res);
+      // @ts-ignore
       this.prods = res.msg;
+    });
+
+  }
+
+  remove(id) {
+    this.prodserv.removeProd(id).subscribe(res => {
+      console.log(res);
+      this.loadData()
     });
 
   }

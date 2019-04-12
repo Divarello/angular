@@ -7,9 +7,10 @@ import {NotfoundComponent} from './notfound/notfound.component';
 import {ContactComponent} from './home/contact/contact.component';
 import {UsersComponent} from './home/users/users.component';
 import {AuthguardGuard} from './authguard.guard';
+import {LayoutComponent} from './home/layout/layout.component';
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthguardGuard], children: [
-      {path : '', component: ContactComponent},
+      {path : '', component: LayoutComponent},
       {path : 'users', component: UsersComponent},
       {
         path: 'products',

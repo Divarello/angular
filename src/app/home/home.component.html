@@ -1,5 +1,18 @@
-<a routerLink="">Contact</a>
+<!-- <a routerLink="">Contact</a>
 <br>
 <a routerLink="/users">Users</a>
 <a routerLink="/products">Products</a>
-<router-outlet></router-outlet>
+<router-outlet></router-outlet> -->
+
+<aside id="left-panel" class="left-panel">
+<app-sidebar></app-sidebar>
+</aside>
+
+
+<div id="right-panel" class="right-panel">
+
+  <!-- Header-->
+  <app-header></app-header>
+  <!-- Header-->
+  <router-outlet></router-outlet>
+</div>
